@@ -13,22 +13,25 @@ class Calculadora:
     def POST(self):
         formulario = web.input()
         operacion = formulario.btn_operacion
-        self.num1 = (float(formulario.inp_numero1))
-        self.num2 = (float(formulario.inp_numero2))
+        num1 = (float(formulario.inp_numero1))
+        num2 = (float(formulario.inp_numero2))
 
         if operacion=="suma":
-            resultado= self.num1 + self.num2
+            resultado= num1 + num2
         
         elif operacion=="resta":
-            resultado= self.num1 - self.num2
+            resultado= num1 - (num2)
 
         elif operacion=="multiplicacion":
-            resultado= self.num1 * self.num2
+            resultado= num1 * num2
 
         elif operacion=="division":
-            resultado:float= self.num1 / self.num2
+            if num2== 0:
+                resultado:str="no_es_divisible_entre_0"
+            else :
+                resultado= num1/num2
 
-        return render.calculadora(resultado)
+        return render.calculadora(resultado,num1,num2)
         
 
 if __name__ == "__main__":
